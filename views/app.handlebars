@@ -15,12 +15,23 @@
       <input id="domoName" type="text" name="name" placeholder="Domo Name"/>
       <label for="age">Age: </label>
       <input id="domoAge" type="text" name="age" placeholder="Domo Age"/>
+      <input id="_csrf" type="hidden" name="_csrf" value="{{csrfToken}}"/>
       <input class="makeDomoSubmit" type="submit" value="Make Domo" />
     </form>
   </section>
   <section id="domos">
     <div class="domo">
-
+      {{#if domos}}
+        {{#each domos}}
+            <div class="domo">
+              <img src="/assets/img/domoface.jpeg" alt="domo face" class="domoFace">
+              <h3 class="domoName">Name: {{this.name}}</h3>
+              <h3 class="domoAge">Age: {{this.age}}</h3>
+            </div>
+        {{/each}}
+      {{else}}
+        <h3 class="emptyDomo">No Domos yet!</h3>
+      {{/if}}
     </div>
   </section>
   <div id="domoMessage" class='hidden'>
